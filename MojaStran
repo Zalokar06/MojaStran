@@ -1,0 +1,35 @@
+import subprocess
+
+def ustvari_stran():
+    naslov = input("Vnesite naslov nove strani: ")
+    ime_datoteke = input("Vnesite ime datoteke (brez .md): ")
+
+    # Ustvari novo Markdown datoteko
+    with open(f"docs/{ime_datoteke}.md", "w") as f:
+        f.write(f"# {naslov}\n\nTukaj dodajte vsebino svoje nove strani.")
+
+    print(f"Datoteka {ime_datoteke}.md je bila ustvarjena v mapi 'docs'.")
+
+def zazenite_mkdocs():
+    subprocess.run(["mkdocs", "serve"])
+
+def glavni_meni():
+    while True:
+        print("\nIzberite operacijo:")
+        print("1. Ustvari novo stran")
+        print("2. Zaženi MkDocs strežnik")
+        print("3. Izhod")
+        izbira = input("Vaša izbira: ")
+
+        if izbira == "1":
+            ustvari_stran()
+        elif izbira == "2":
+            zazenite_mkdocs()
+        elif izbira == "3":
+            break
+        else:
+            print("Neveljavna izbira. Poskusite znova.")
+
+if __name__ == "__main__":
+    print("Dobrodošli v upravljalcu vsebin za MkDocs!")
+    glavni_meni()
