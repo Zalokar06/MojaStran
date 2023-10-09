@@ -1,8 +1,4 @@
 import subprocess
-git add style.scss mkdocs.yml
-git commit -m "Dodaj datoteke style.scss in mkdocs.yml"
-git push origin MojaStran
-
 
 def ustvari_stran():
     naslov = input("Vnesite naslov nove strani: ")
@@ -13,6 +9,13 @@ def ustvari_stran():
         f.write(f"# {naslov}\n\nTukaj dodajte vsebino svoje nove strani.")
 
     print(f"Datoteka {ime_datoteke}.md je bila ustvarjena v mapi 'docs'.")
+
+    # Ustvari ali ureja datoteko style.scss
+    with open("docs/assets/css/style.scss", "w") as scss_file:
+        # Tukaj lahko določite privzete sloge za vašo spletno stran
+        scss_file.write(".naslov { color: red; }")  # Primer sloge
+
+    print("Datoteka style.scss je bila ustvarjena ali posodobljena v mapi 'docs/assets/css'.")
 
 def zazenite_mkdocs():
     subprocess.run(["mkdocs", "serve"])
