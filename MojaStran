@@ -1,4 +1,8 @@
 import subprocess
+git add style.scss mkdocs.yml
+git commit -m "Dodaj datoteke style.scss in mkdocs.yml"
+git push origin MojaStran
+
 
 def ustvari_stran():
     naslov = input("Vnesite naslov nove strani: ")
